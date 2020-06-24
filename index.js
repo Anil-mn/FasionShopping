@@ -15,9 +15,10 @@ app.get("/", (req, res) => {
 
 
 
-  
+
 //bring all routes
 const auth = require("./routes/auth");
+const user = require("./routes/user");
 //const products = require("./routes/api/products");
 
 
@@ -41,7 +42,8 @@ mongoose
   })
 
   //actual routes
-app.use("/auth", auth);
+app.use("/api", auth);
+app.use("/api", user);
 //app.use("/api/products",  products);
 
 //port 5000

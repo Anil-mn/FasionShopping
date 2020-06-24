@@ -19,6 +19,7 @@ app.get("/", (req, res) => {
 //bring all routes
 const auth = require("./routes/auth");
 const user = require("./routes/user");
+const cate = require("./routes/category");
 //const products = require("./routes/api/products");
 
 
@@ -44,6 +45,7 @@ mongoose
   //actual routes
 app.use("/api", auth);
 app.use("/api", user);
+app.use("/api", cate);
 //app.use("/api/products",  products);
 
 //port 5000

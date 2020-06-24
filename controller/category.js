@@ -1,5 +1,5 @@
 const Category = require("../model/category");
-const category = require("../model/category");
+
 
 
 exports.getCategoryById = (req,res,next,id) =>{
@@ -44,3 +44,33 @@ exports.getAllCategory = (req,res) => {
 }
 
 
+exports.updateCategory = (req,res) => {
+    Category.findOneAndUpdate(
+        {_id:req.category._id},
+        {$set : req.body},
+        { new: true, useFindAndModify: false },
+        (err, cata) => {
+            if (err) {
+              return res.status(400).json({
+                error: "You are not authorized to update this user"
+              });
+            } res.json(cata);
+          }
+        )
+}
+
+
+exports.removeCategory = (req, res) => {
+    const category = req.category;
+  
+    category.remove((err, category) => {
+      if (err) {
+        return res.status(400).json({
+          error: "Failed to delete this category"
+        });
+      }
+      res.json({
+        message: "Successfull deleted"
+      });
+    });
+  };

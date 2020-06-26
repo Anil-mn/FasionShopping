@@ -20,6 +20,7 @@ app.get("/", (req, res) => {
 const auth = require("./routes/auth");
 const user = require("./routes/user");
 const cate = require("./routes/category");
+const products = require("./routes/products");
 //const products = require("./routes/api/products");
 
 
@@ -29,6 +30,12 @@ const cate = require("./routes/category");
 app.use(bodyParser.json());
 
 
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 //mongoDB configuration
 //const db = require("./setup/myurl").mongoURL;
@@ -46,6 +53,7 @@ mongoose
 app.use("/api", auth);
 app.use("/api", user);
 app.use("/api", cate);
+app.use("/api", products);
 //app.use("/api/products",  products);
 
 //port 5000

@@ -1,29 +1,44 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const { ObjectId } = mongoose.Schema;
 
-const ProductSchema = new Schema({
-    name :
-    {
-       type: String,
-       required: true
+const productSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      trim: true,
+      required: true,
+      maxlength: 32
     },
-    price :
-    {
-        type : String,
-        required: true
+    description: {
+      type: String,
+      trim: true,
+      required: true,
+      maxlength: 2000
     },
-    discription : {
-        type : String
-    },
-    image : {
-        type: String,
-        default: "https://learncodeonline.in/manicon.png"
+    price: {
+      type: Number,
+      required: true,
+      maxlength: 32,
+      trim: true
     },
     category: {
-        type : String,
-        required : true
+      type: ObjectId,
+      ref: "Categoery",
+      required: true
+    },
+    stock: {
+      type: Number
+    },
+    sold: {
+      type: Number,
+      default: 0
+    },
+    photo: {
+      data: Buffer,
+      contentType: String
     }
+  },
+  { timestamps: true }
+);
 
-})
-
-module.exports = Products = mongoose.model("Products", ProductSchema);
+module.exports = mongoose.model("Product", productSchema);

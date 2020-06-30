@@ -11,7 +11,8 @@ const {
     getCategory,
     getAllCategory,
     updateCategory,
-    removeCategory
+    removeCategory,
+    getProductByCata
 } = require('../controller/category')
 
 
@@ -46,5 +47,9 @@ router.put(
     isAdmin,
     removeCategory
   );
+
+
+
+
 
 module.exports = router;

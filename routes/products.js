@@ -6,7 +6,8 @@ const {isSignedIn , isAdmin ,isAuthenticated} = require("../controller/auth")
 const {getUserById} = require("../controller/user")
 const {getProductById,
        createProduct,
-       updateProduct
+       updateProduct,
+       getProductByCata
     } = require("../controller/products")
 
 
@@ -33,4 +34,8 @@ isAuthenticated,
 isAdmin,
 updateProduct
 )
+
+
+
+router.get("/products/:id", getProductByCata);
 module.exports = router;

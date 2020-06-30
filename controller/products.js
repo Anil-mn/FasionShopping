@@ -1,4 +1,5 @@
 const Product = require("../model/products");
+const Category = require("../model/category");
 const formidable = require("formidable");
 const _ = require("lodash");
 const fs = require("fs");
@@ -95,3 +96,19 @@ exports.updateProduct = (req,res) => {
 }
 
 
+exports.getProductByCata = (req,res) =>{
+  
+  
+  Product.find({category: req.params.id})
+  .select("-photo")
+  .exec((err, products) => {
+    if (err) {
+      return res.status(400).json({
+        error: "NO Products found"
+      });
+    }
+    
+    res.json(products);
+  });
+
+}

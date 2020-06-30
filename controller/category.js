@@ -2,6 +2,7 @@ const Category = require("../model/category");
 
 
 
+
 exports.getCategoryById = (req,res,next,id) =>{
    Category.findById(id).exec((err,cate)=>{
     if (err) {
@@ -74,3 +75,4 @@ exports.removeCategory = (req, res) => {
       });
     });
   };
+

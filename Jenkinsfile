@@ -26,9 +26,7 @@
 // }
 // Node
 pipeline {
-    agent {
-        label 'windows-mern'
-    }
+    agent any
     stages {
         stage('Build Backend') {
             steps {

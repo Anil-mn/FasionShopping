@@ -1,5 +1,5 @@
 pipeline {
-    agent { node { label 'your-node-label' } }
+    agent any
     stages {
         stage('Clone repository') {
             steps {

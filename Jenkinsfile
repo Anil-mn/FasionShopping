@@ -35,7 +35,7 @@ pipeline {
         }
         stage('Build Frontend') {
             steps {
-                bat 'cd shopping && rmdir node_modules && npm install'
+                bat 'cd shopping  && npm install'
             }
         }
         stage('Test Backend') {
